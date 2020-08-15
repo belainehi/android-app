@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "96005108154",
+    "firebase_url": "https://volunteer-info-3ec1e.firebaseio.com",
+    "project_id": "volunteer-info-3ec1e",
+    "storage_bucket": "volunteer-info-3ec1e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:96005108154:android:d0877390c9d35871e16d83",
+        "android_client_info": {
+          "package_name": "com.Team.volunteer_info"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "96005108154-nehou3gi9uib64493lknsgcht40562ki.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWPe_ppvjIvGuRX5_-1HGSPL60N0TBckw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "96005108154-nehou3gi9uib64493lknsgcht40562ki.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
