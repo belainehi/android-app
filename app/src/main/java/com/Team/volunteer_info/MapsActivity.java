@@ -28,8 +28,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-        // Add a marker in Sydney and move the camera
+        
         LatLng bloomfield = new LatLng(40.8068, -74.1854);
         mMap.addMarker(new MarkerOptions().position(bloomfield).title("Bloomfield, NJ"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(bloomfield));

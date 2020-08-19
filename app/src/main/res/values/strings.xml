@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">volunteer-info</string>
     <string name="title_activity_maps">Map</string>
+    <string name="text_home">home</string>
+    <string name="text_map">map</string>
+    <string name="text_profile">profile</string>
 </resources>
