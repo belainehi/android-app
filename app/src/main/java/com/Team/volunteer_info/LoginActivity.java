@@ -29,12 +29,12 @@ public class LoginActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
 
-    @Override
-    public void onStart(){
-        super.onStart();
-        FirebaseUser currentUser = auth.getCurrentUser();
-        Intent i = new Intent(LoginActivity.this , MainActivity.class);
-    }
+//    @Override
+//    public void onStart(){
+//        super.onStart();
+//        FirebaseUser currentUser = auth.getCurrentUser();
+//        Intent i = new Intent(LoginActivity.this , MainActivity.class);
+//    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,10 +69,12 @@ public class LoginActivity extends AppCompatActivity {
 
     private void loginClicked() {
         Log.d(TAG, "loginClicked: Checking login credentials");
-        if (email.getText().toString() == null || password.getText().toString() == null){
+        String str_email = email.getText().toString();
+        String str_password = password.getText().toString();
+        if (str_email.isEmpty() || str_password.isEmpty()){
             Toast.makeText(this, "Both email and password are required!", Toast.LENGTH_SHORT).show();}
         else {
-            auth.signInWithEmailAndPassword(String.valueOf(email), String.valueOf(password))
+            auth.signInWithEmailAndPassword(str_email, str_password)
                     .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
