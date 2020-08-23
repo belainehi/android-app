@@ -1,4 +1,4 @@
-package com.Team.volunteer_info;
+package com.Team.volunteer_info.fragments;
 
 import androidx.appcompat.app.AppCompatActivity;
 
