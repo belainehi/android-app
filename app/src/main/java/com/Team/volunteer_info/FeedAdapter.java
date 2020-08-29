@@ -36,29 +36,29 @@ public class FeedAdapter extends FirestoreRecyclerAdapter<Feed, FeedAdapter.Feed
     @Override
     protected void onBindViewHolder(@NonNull final FeedHolder holder, int position, @NonNull final Feed model) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("users")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()){
-                                if(model.getuName().equals(document.get("username"))) {
-                                    model.setUserImage(document.get("imageurl").toString());
-                                    Picasso.get().load(model.getUserImage()).into(holder.userImage);
-                                }
-                            }
-
-                        } else {
-                            Log.w(TAG, "Error getting documents.", task.getException());
-                        }
-                    }
-                });
+//        db.collection("users")
+//                .get()
+//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                        if (task.isSuccessful()) {
+//                            for (QueryDocumentSnapshot document : task.getResult()){
+//                                if(model.getuName().equals(document.get("username"))) {
+//                                    model.setUserImage(document.get("imageurl").toString());
+//                                    Picasso.get().load(model.getUserImage()).into(holder.userImage);
+//                                }
+//                            }
+//
+//                        } else {
+//                            Log.w(TAG, "Error getting documents.", task.getException());
+//                        }
+//                    }
+//                });
 
         holder.uName.setText(model.getuName());
         holder.description.setText(model.getDescription());
         Picasso.get().load(model.getImage()).into(holder.image);
-    }
+ }
 
     @NonNull
     @Override
@@ -72,13 +72,11 @@ public class FeedAdapter extends FirestoreRecyclerAdapter<Feed, FeedAdapter.Feed
         TextView uName;
         TextView description;
         ImageView image;
-        ImageView userImage;
         public FeedHolder(@NonNull View itemView) {
             super(itemView);
             uName = itemView.findViewById(R.id.uName);
             description = itemView.findViewById(R.id.description);
             image = itemView.findViewById(R.id.image);
-            userImage = itemView.findViewById(R.id.userImage);
         }
     }
 }
