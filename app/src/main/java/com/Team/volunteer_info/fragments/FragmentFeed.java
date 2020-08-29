@@ -2,6 +2,7 @@ package com.Team.volunteer_info.fragments;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.PeriodicSync;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,10 +33,10 @@ import com.google.firebase.firestore.Query;
 
 public class FragmentFeed extends Fragment {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference postRef = db.collection("posts");
+    private CollectionReference feedRef = db.collection("Feed");
     private FeedAdapter adapter;
 
-    final private String POSTS_FRAGMENT = "EventsFragment";
+    final private String FEED_FRAGMENT = "FeedFragments";
 
     private ImageView addPost;
     private Button btnLogout;
@@ -61,15 +62,15 @@ public class FragmentFeed extends Fragment {
         addPost = view.findViewById(R.id.addPost);
         btnLogout = view.findViewById(R.id.logoutBtn);
 
-        ref = FirebaseDatabase.getInstance().getReference().child("posts");
+        ref = FirebaseDatabase.getInstance().getReference().child("Feed");
         final FirebaseAuth instance = FirebaseAuth.getInstance();
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(POSTS_FRAGMENT, "Logging out.");
+                Log.d(FEED_FRAGMENT, "Logging out.");
                 //logs user out using firebase
-                Log.d(POSTS_FRAGMENT, "logging off: "+instance.getCurrentUser());
+                Log.d(FEED_FRAGMENT, "logging off: "+instance.getCurrentUser());
                 signOut(instance);
                 goLoginActivity();
             }
@@ -78,7 +79,9 @@ public class FragmentFeed extends Fragment {
         addPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(FEED_FRAGMENT, "ADD  POST BUTTON");
                 startActivity(new Intent(getActivity(), FeedActivity.class));
+                Log.d(FEED_FRAGMENT, "ADD POST CLICKED");
             }
         });
     }
@@ -104,7 +107,7 @@ public class FragmentFeed extends Fragment {
 
     private void setUpRecyclerView(View view){
 
-        Query query = postRef;
+        Query query = feedRef;
         FirestoreRecyclerOptions<Feed> options = new FirestoreRecyclerOptions.Builder<Feed>()
                 .setQuery(query,Feed.class)
                 .build();

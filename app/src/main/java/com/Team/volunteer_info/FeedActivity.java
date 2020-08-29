@@ -65,7 +65,7 @@ public class FeedActivity extends AppCompatActivity {
 
         timestamp = String.valueOf(System.currentTimeMillis());
         mAuth = FirebaseAuth.getInstance();
-
+        Log.d(TAG, "OPENED FEED ACTIVITY");
         btnCaptureImage = findViewById(R.id.btnCapturePicture);
         ivPostImage = findViewById(R.id.ivPostImage);
         btnSubmit = findViewById(R.id.btnSubmit);
@@ -121,6 +121,7 @@ public class FeedActivity extends AppCompatActivity {
         //handleUpload();
 
         username = getUserName(firebaseUser, db);
+        Log.d(TAG, "DATABSE REFERENCE");
 
         if(downloadUri!= null) {
             HashMap<String, Object> map = new HashMap<>();

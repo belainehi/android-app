@@ -21,7 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class FeedAdapter extends FirestoreRecyclerAdapter<Feed, FeedAdapter.FeedHolder> {
-    private static final String TAG = "PostsAdapter";
+    private static final String TAG = "FeedAdapter";
 
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link

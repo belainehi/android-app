@@ -13,8 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:src="@drawable/common_google_signin_btn_icon_dark_normal_background"
-        android:backgroundTint="@color/white"/>
+        android:backgroundTint="@color/colorPrimary"
+        android:src="@android:drawable/ic_menu_add" />
     <Button
         android:layout_marginTop="5dp"
         android:id="@+id/logoutBtn"
