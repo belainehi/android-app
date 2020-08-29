@@ -3,6 +3,7 @@ package com.Team.volunteer_info;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -80,6 +82,8 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 else if (new_password.getText().toString().equals(confirm_password.getText().toString()))
                 {
+                    uname = username.getText().toString();
+
                     createNewUser();
 
                     firebaseUser = mAuth.getCurrentUser();
@@ -87,7 +91,6 @@ public class RegisterActivity extends AppCompatActivity {
                     userid = mAuth.getUid();
                     db = FirebaseFirestore.getInstance();
                     fname = full_name.getText().toString();
-                    uname = username.getText().toString();
                     registertoDatabase(db,fname, userid, useremail, uname);
 
                     pd.dismiss();
@@ -111,6 +114,19 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(uname)
+                                    .build();
+                            user.updateProfile(profileUpdates)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Log.d(TAG, "User profile updated.");
+                                            }
+                                        }
+                                    });
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("RegisterActivity", "createUserWithEmail:success");
 
