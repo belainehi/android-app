@@ -83,17 +83,17 @@ public class RegisterActivity extends AppCompatActivity {
                     createNewUser();
 
                     firebaseUser = mAuth.getCurrentUser();
-//
-                    useremail = Objects.requireNonNull(firebaseUser).getEmail();
-                    userid = firebaseUser.getUid().toString();
+                    useremail = user_email.getText().toString();
+                    userid = mAuth.getUid();
                     db = FirebaseFirestore.getInstance();
                     fname = full_name.getText().toString();
                     uname = username.getText().toString();
-                    registertoDatabase(db);
+                    registertoDatabase(db,fname, userid, useremail, uname);
 
                     pd.dismiss();
                     Intent i = new Intent(RegisterActivity.this, MainActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    pd.dismiss();
                     startActivity(i);
                 }
                 else
@@ -125,12 +125,12 @@ public class RegisterActivity extends AppCompatActivity {
                 });
     }
 
-    public void registertoDatabase(FirebaseFirestore db) {
+    public void registertoDatabase(FirebaseFirestore db, String fname, String userid, String useremail, String user_name) {
         Map<String, Object> map_user = new HashMap<>();
         map_user.put("fullname", fname);
         map_user.put("id", userid);
-        map_user.put("email", user_email);
-        map_user.put("username", uname);
+        map_user.put("email", useremail);
+        map_user.put("username", user_name);
 
 
 
