@@ -57,13 +57,11 @@ public class RegisterActivity extends AppCompatActivity {
         full_name = findViewById(R.id.fullname);
 
         mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
+
 
         firebaseUser = mAuth.getCurrentUser();
-        assert firebaseUser != null;
         userid = firebaseUser.getUid();
         useremail = firebaseUser.getEmail();
-        FirebaseFirestore.getInstance();
 
         new_signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,11 +78,16 @@ public class RegisterActivity extends AppCompatActivity {
                 else if (new_password.getText().toString().equals(confirm_password.getText().toString()))
                 {
                     createNewUser();
-                    registertoDatabase();
+                    //registertoDatabase();
+
+                    pd.dismiss();
+                    Intent i = new Intent(RegisterActivity.this, MainActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(i);
                 }
                 else
                 {
-                    Toast.makeText(RegisterActivity.this, "Passwords must match!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText`(RegisterActivity.this, "Passwords must match!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -100,6 +103,34 @@ public class RegisterActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("RegisterActivity", "createUserWithEmail:success");
                             firebaseUser = mAuth.getCurrentUser();
+                            db = FirebaseFirestore.getInstance();
+
+                            Map<String, Object> map_user = new HashMap<>();
+                            map_user.put("fullname", full_name.getText().toString());
+                            map_user.put("id", userid);
+                            map_user.put("email", user_email);
+                            map_user.put("username", username.getText().toString());
+
+
+
+                            // Add a new document with a generated ID
+                            db.collection("users")
+                                    .add(map_user)
+                                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                        @Override
+                                        public void onSuccess(DocumentReference documentReference) {
+                                            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+
+
+
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w(TAG, "Error adding document", e);
+                                        }
+                                    });
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("RegisterActivity", "createUserWithEmail:failure", task.getException());
@@ -111,7 +142,8 @@ public class RegisterActivity extends AppCompatActivity {
                 });
     }
 
-    private void registertoDatabase() {
+    public void registertoDatabase() {
+        db = FirebaseFirestore.getInstance();
 
         Map<String, Object> map_user = new HashMap<>();
         map_user.put("fullname", full_name.getText().toString());
@@ -128,10 +160,8 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                        pd.dismiss();
-                        Intent i = new Intent(RegisterActivity.this, MainActivity.class);
-                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(i);
+
+
 
                     }
                 })
