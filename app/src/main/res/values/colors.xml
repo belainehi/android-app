@@ -8,6 +8,7 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="dark">#FF222222</color>
     <color name="mainColor">#90AADDAD</color>
-    <color name="colorWhite">#FFFFFF</color>
     <color name="civ_border_color">#F61717</color>
+    <color name="orange">#ff5e00 </color>
+    <color name="darkOrange">#e65500</color>
 </resources>
