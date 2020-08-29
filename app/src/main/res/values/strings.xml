@@ -3,7 +3,7 @@
     <string name="title_activity_maps">Map</string>
     <string name="text_home">home</string>
     <string name="text_map">map</string>
-    <string name="text_profile">profile</string>
+    <string name="text_profile">charity</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

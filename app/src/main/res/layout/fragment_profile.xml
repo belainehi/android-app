@@ -7,10 +7,28 @@
     tools:context=".fragments.ProfileFragment">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textView0"
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:textColor="#000000"
+        android:textSize="30dp"
+        android:text="Charity Locations to Donate" />
+    <View
+        android:id="@+id/v0"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/textView3"
+        android:layout_marginBottom="0dp"
+        android:background="#000000" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        android:layout_below="@+id/textView0"
         android:text="--RedCross: https://www.redcross.org/" />
 
     <TextView
@@ -19,6 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:textColor="#000000"
+        android:textSize="15dp"
         android:text="--United Nations: https://www.unv.org/" />
     <TextView
         android:id="@+id/textView5"
@@ -26,6 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:textColor="#000000"
+        android:textSize="15dp"
         android:text="--Habitat for Humanity: https://www.habitat.org/" />
     <TextView
         android:id="@+id/textView6"
@@ -33,6 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:textColor="#000000"
+        android:textSize="15dp"
         android:text="--Aameri Corps: https://www.nationalservice.gov/programs/americorps" />
     <TextView
         android:id="@+id/textView7"
@@ -40,6 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:textColor="#000000"
+        android:textSize="15dp"
         android:text="--East Corps: https://www.eascorp.org/" />
     <TextView
         android:id="@+id/textView8"
@@ -47,6 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:textColor="#000000"
+        android:textSize="15dp"
         android:text="--Global Volunteers: https://www.gviusa.com/" />
     <TextView
         android:id="@+id/textView9"
@@ -54,6 +77,7 @@
         android:layout_width="match_parent"
         android:textColor="#000000"
         android:layout_height="64dp"
+        android:textSize="15dp"
         android:text="--DHS: https://www.dhs.gov/employee-resources/volunteering" />
     <TextView
         android:id="@+id/textView10"
@@ -61,6 +85,7 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:textColor="#000000"
+        android:textSize="15dp"
         android:text="--WWWOOF: https://wwoof.net/" />
     <TextView
         android:id="@+id/textView11"
@@ -68,6 +93,7 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:textColor="#000000"
+        android:textSize="15dp"
         android:text="--Global Vision International: https://www.gviusa.com/" />
     <TextView
         android:id="@+id/textView12"
@@ -75,6 +101,7 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:textColor="#000000"
+        android:textSize="15dp"
         android:text="--Senior Corps: https://www.nationalservice.gov/programs/senior-corps" />
     <TextView
         android:id="@+id/textView13"
@@ -82,5 +109,6 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:textColor="#000000"
+        android:textSize="15dp"
         android:text="--Hands on Network: https://www.handsonconnect.org/" />
 </RelativeLayout>
