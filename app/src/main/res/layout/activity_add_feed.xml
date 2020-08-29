@@ -16,7 +16,7 @@
         android:text="Make new post"
         android:textAlignment="center"
         android:textSize="30dp"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:textColor="@color/black"/>
 
     <EditText
         android:backgroundTint="@color/white"
@@ -36,8 +36,17 @@
         android:layout_height="wrap_content"
         android:text="Take Picture"
         android:textSize="18dp"
-        android:textColor="#000000"
+        android:textColor="#FFC107"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/custom_button"/>
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/description"
+        android:layout_marginBottom="0dp"
+        android:background="#000000" />
 
     <ImageView
         android:id="@+id/ivPostImage"
@@ -48,27 +57,48 @@
         tools:srcCompat="@tools:sample/avatars"
         android:background="#FF7F50	"/>
 
-    <Button
-        android:id="@+id/btnSubmit"
+    <View
+        android:id="@+id/view2"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@drawable/custom_button"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:text="Add Post"
-        android:textColor="@color/white"
-        android:textSize="18dp" />
+        android:layout_height="1dp"
+        android:layout_above="@+id/description"
+        android:layout_marginBottom="0dp"
+        android:background="#000000" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background3"
+        >
 
-    <TextView
-        android:id="@+id/cancelAdd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/custom_button"
-        android:paddingTop="15dp"
-        android:paddingBottom="10dp"
-        android:text="Cancel"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="25dp" />
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/custom_button"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Add Post"
+            android:textColor="@color/fui_bgPhone"
+            android:textSize="18dp" />
+
+
+        <TextView
+            android:id="@+id/cancelAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_button"
+            android:paddingTop="15dp"
+            android:layout_below="@+id/btnSubmit"
+            android:layout_marginTop="15dp"
+            android:paddingBottom="10dp"
+            android:text="Cancel"
+            android:textAlignment="center"
+            android:textColor="#EF1212"
+            android:textSize="25dp" />
+    </RelativeLayout>
+
+
+
 
 </LinearLayout>

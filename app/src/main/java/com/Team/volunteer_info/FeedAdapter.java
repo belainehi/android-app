@@ -58,7 +58,7 @@ public class FeedAdapter extends FirestoreRecyclerAdapter<Feed, FeedAdapter.Feed
         holder.uName.setText(model.getuName());
         holder.description.setText(model.getDescription());
         Picasso.get().load(model.getImage()).into(holder.image);
-    }
+ }
 
     @NonNull
     @Override
@@ -72,13 +72,11 @@ public class FeedAdapter extends FirestoreRecyclerAdapter<Feed, FeedAdapter.Feed
         TextView uName;
         TextView description;
         ImageView image;
-        ImageView userImage;
         public FeedHolder(@NonNull View itemView) {
             super(itemView);
             uName = itemView.findViewById(R.id.uName);
             description = itemView.findViewById(R.id.description);
             image = itemView.findViewById(R.id.image);
-            userImage = itemView.findViewById(R.id.userImage);
         }
     }
 }
