@@ -20,8 +20,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
         app:itemBackground="@color/colorPrimary"
-        app:itemIconTint="@color/colorWhite"
-        app:itemTextColor="@color/colorWhite"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:itemBackground="@color/orange"
         app:menu="@menu/menu_bottom_navigation"
         tools:layout_editor_absoluteY="678dp" />
 

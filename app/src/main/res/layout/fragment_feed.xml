@@ -6,6 +6,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background3"
     tools:context=".fragments.FragmentFeed">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -13,35 +14,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:backgroundTint="@color/colorPrimary"
-        android:src="@android:drawable/ic_menu_add" />
+        android:backgroundTint="@android:color/primary_text_light"
+        android:src="@android:drawable/ic_input_add" />
+
     <Button
-        android:layout_marginTop="5dp"
         android:id="@+id/logoutBtn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="logout"
+        android:layout_height="37dp"
         android:layout_marginLeft="300dp"
-        android:background="@drawable/custom_button"
-        android:textColor="@color/white"/>
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/fui_idp_button_background_anonymous"
+        android:text="logout"
+        android:textColor="@color/black" />
 
     <TextView
-        android:textColor="#fff"
+        android:textColor="#D59A5E05"
         android:id="@+id/postsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:text="Posts"
+        android:text="Feed"
         android:textSize="40dp"
         />
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="45dp"
         android:id="@+id/rvPosts"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="45dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -4,8 +4,8 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Feed extends AppCompatActivity {
-    final private String TAG = "Feed";
+public class Feed {
+    final private String TAG = "Post";
     private String uName;
     private String description;
     private String image;
@@ -17,6 +17,7 @@ public class Feed extends AppCompatActivity {
 
 
     public Feed(){
+
     }
     public Feed(String uName,String description,String image,String postID,String uId, String name, String userImage){
         this.userImage = userImage;
@@ -62,6 +63,6 @@ public class Feed extends AppCompatActivity {
     }
 
     public String getName(){
-        return name;
-    };
+
+        return name;};
 }
