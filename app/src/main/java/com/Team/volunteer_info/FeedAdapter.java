@@ -36,24 +36,24 @@ public class FeedAdapter extends FirestoreRecyclerAdapter<Feed, FeedAdapter.Feed
     @Override
     protected void onBindViewHolder(@NonNull final FeedHolder holder, int position, @NonNull final Feed model) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("users")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()){
-                                if(model.getuName().equals(document.get("username"))) {
-                                    model.setUserImage(document.get("imageurl").toString());
-                                    Picasso.get().load(model.getUserImage()).into(holder.userImage);
-                                }
-                            }
-
-                        } else {
-                            Log.w(TAG, "Error getting documents.", task.getException());
-                        }
-                    }
-                });
+//        db.collection("users")
+//                .get()
+//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                        if (task.isSuccessful()) {
+//                            for (QueryDocumentSnapshot document : task.getResult()){
+//                                if(model.getuName().equals(document.get("username"))) {
+//                                    model.setUserImage(document.get("imageurl").toString());
+//                                    Picasso.get().load(model.getUserImage()).into(holder.userImage);
+//                                }
+//                            }
+//
+//                        } else {
+//                            Log.w(TAG, "Error getting documents.", task.getException());
+//                        }
+//                    }
+//                });
 
         holder.uName.setText(model.getuName());
         holder.description.setText(model.getDescription());

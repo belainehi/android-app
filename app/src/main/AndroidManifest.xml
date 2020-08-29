@@ -33,6 +33,9 @@
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".FeedActivity" />
+
+
     </application>
 
 </manifest>

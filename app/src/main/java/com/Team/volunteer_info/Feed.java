@@ -4,7 +4,7 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Feed extends AppCompatActivity {
+public class Feed {
     final private String TAG = "Post";
     private String uName;
     private String description;
