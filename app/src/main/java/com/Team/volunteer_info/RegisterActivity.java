@@ -25,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity {
     final private String TAG = "RegisterActivity";
@@ -34,8 +35,12 @@ public class RegisterActivity extends AppCompatActivity {
     EditText confirm_password;
     EditText full_name;
     Button new_signup;
+
+
     String userid;
     String useremail;
+    String fname;
+    String uname;
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
@@ -59,9 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
 
-        firebaseUser = mAuth.getCurrentUser();
-        userid = firebaseUser.getUid();
-        useremail = firebaseUser.getEmail();
+
 
         new_signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +81,15 @@ public class RegisterActivity extends AppCompatActivity {
                 else if (new_password.getText().toString().equals(confirm_password.getText().toString()))
                 {
                     createNewUser();
-                    //registertoDatabase();
+
+                    firebaseUser = mAuth.getCurrentUser();
+//
+                    useremail = Objects.requireNonNull(firebaseUser).getEmail();
+                    userid = firebaseUser.getUid().toString();
+                    db = FirebaseFirestore.getInstance();
+                    fname = full_name.getText().toString();
+                    uname = username.getText().toString();
+                    registertoDatabase(db);
 
                     pd.dismiss();
                     Intent i = new Intent(RegisterActivity.this, MainActivity.class);
@@ -87,7 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText`(RegisterActivity.this, "Passwords must match!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Passwords must match!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -102,35 +113,7 @@ public class RegisterActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("RegisterActivity", "createUserWithEmail:success");
-                            firebaseUser = mAuth.getCurrentUser();
-                            db = FirebaseFirestore.getInstance();
 
-                            Map<String, Object> map_user = new HashMap<>();
-                            map_user.put("fullname", full_name.getText().toString());
-                            map_user.put("id", userid);
-                            map_user.put("email", user_email);
-                            map_user.put("username", username.getText().toString());
-
-
-
-                            // Add a new document with a generated ID
-                            db.collection("users")
-                                    .add(map_user)
-                                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                        @Override
-                                        public void onSuccess(DocumentReference documentReference) {
-                                            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-
-
-
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            Log.w(TAG, "Error adding document", e);
-                                        }
-                                    });
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("RegisterActivity", "createUserWithEmail:failure", task.getException());
@@ -142,14 +125,12 @@ public class RegisterActivity extends AppCompatActivity {
                 });
     }
 
-    public void registertoDatabase() {
-        db = FirebaseFirestore.getInstance();
-
+    public void registertoDatabase(FirebaseFirestore db) {
         Map<String, Object> map_user = new HashMap<>();
-        map_user.put("fullname", full_name.getText().toString());
+        map_user.put("fullname", fname);
         map_user.put("id", userid);
         map_user.put("email", user_email);
-        map_user.put("username", username.getText().toString());
+        map_user.put("username", uname);
 
 
 
@@ -160,8 +141,6 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-
-
 
                     }
                 })
